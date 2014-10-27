@@ -12,9 +12,13 @@ module DixieUtils
 
     def authenticate_with_dixie
       if current_user.nil?
-        session[:redirect_back_url] = request.original_url
-        flash[:notice] = "You need to sign in."
-        redirect_to(ENV['AUTH_URL'])
+        if params[:format] == 'json'
+          head :unauthorized
+        else
+          session[:redirect_back_url] = request.original_url
+          flash[:notice] = "You need to sign in."
+          redirect_to(ENV['AUTH_URL'])
+        end
       end
     end
 
