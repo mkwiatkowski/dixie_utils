@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     dixie_utils (0.0.3)
-      rails (~> 4.1.6)
+      rails (>= 4.1.6)
 
 GEM
   remote: https://rubygems.org/
