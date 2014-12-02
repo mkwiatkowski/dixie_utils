@@ -1,5 +1,3 @@
-
-
 module DixieUtils
   module Authentication
     def self.included(klass)
@@ -9,6 +7,12 @@ module DixieUtils
     end
 
     private
+
+    def require_role(role)
+      if current_user.nil? || !current_user.roles.include?(role)
+        head :unauthorized
+      end
+    end
 
     def authenticate_with_dixie
       if current_user.nil?
