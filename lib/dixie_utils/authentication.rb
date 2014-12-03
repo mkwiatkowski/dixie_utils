@@ -1,4 +1,12 @@
 module DixieUtils
+  def self.cookie_store_options
+    {
+      expire_after: 2592000, # 1 month
+      key: '_dixie-auth_session',
+      domain: ENV['DOMAIN']
+    }
+  end
+
   module Authentication
     def self.included(klass)
       klass.before_action :authenticate_with_dixie
