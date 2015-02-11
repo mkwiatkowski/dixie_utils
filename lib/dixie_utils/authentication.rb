@@ -49,5 +49,9 @@ module DixieUtils
     def logout_button
       "<div class='logout-button-div'><form action='#{ENV['AUTH_URL']}session' method='post'><input name='_method' type='hidden' value='delete' /><input type='submit' value='Logout' class='btn btn-warning btn-logout' /></form></div>".html_safe
     end
+
+    def refresh_session_expiration_time
+      session[:current_user]["expire_at"] = 1.month.from_now.to_i
+    end
   end
 end
