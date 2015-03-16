@@ -14,7 +14,7 @@ module DixieUtils
       klass.helper_method :logout_button
     end
 
-    private
+    protected
 
     def require_role(role)
       if current_user.nil? || !current_user.roles.include?(role)
