@@ -41,7 +41,7 @@ module DixieUtils
     def load_current_user
       if hash = session[:current_user]
         if Time.at(hash["expire_at"]).future?
-          OpenStruct.new(hash.slice("username", "roles"))
+          OpenStruct.new(hash.slice("email", "roles", "user", "username"))
         end
       end
     end
